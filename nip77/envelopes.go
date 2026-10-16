@@ -153,7 +153,7 @@ type ErrorEnvelope struct {
 	Reason         string
 }
 
-func (_ ErrorEnvelope) Label() string { return "NEG-ERROR" }
+func (_ ErrorEnvelope) Label() string { return "NEG-ERR" }
 func (v ErrorEnvelope) String() string {
 	b, _ := v.MarshalJSON()
 	return string(b)
@@ -163,7 +163,7 @@ func (v *ErrorEnvelope) FromJSON(data string) error {
 	r := gjson.Parse(data)
 	arr := r.Array()
 	if len(arr) < 3 {
-		return fmt.Errorf("failed to decode NEG-ERROR envelope")
+		return fmt.Errorf("failed to decode NEG-ERR envelope")
 	}
 	v.SubscriptionID = arr[1].Str
 	v.Reason = arr[2].Str
@@ -171,11 +171,11 @@ func (v *ErrorEnvelope) FromJSON(data string) error {
 }
 
 func (v ErrorEnvelope) MarshalJSON() ([]byte, error) {
-	res := bytes.NewBuffer(make([]byte, 0, 19+len(v.SubscriptionID)+len(v.Reason)))
-	res.WriteString(`["NEG-ERROR","`)
-	res.WriteString(v.SubscriptionID)
-	res.WriteString(`","`)
-	res.WriteString(v.Reason)
-	res.WriteString(`"]`)
-	return res.Bytes(), nil
+	w := jwriter.Writer{NoEscapeHTML: true}
+	w.RawString(`["NEG-ERR",`)
+	w.String(v.SubscriptionID)
+	w.RawByte(',')
+	w.String(v.Reason)
+	w.RawByte(']')
+	return w.BuildBytes()
 }
