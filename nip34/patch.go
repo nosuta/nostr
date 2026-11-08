@@ -3,8 +3,8 @@ package nip34
 import (
 	"strings"
 
-	"fiatjaf.com/nostr"
 	"github.com/bluekeyes/go-gitdiff/gitdiff"
+	"github.com/nosuta/nostr"
 )
 
 type Patch struct {

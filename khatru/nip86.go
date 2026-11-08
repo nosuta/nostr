@@ -12,8 +12,8 @@ import (
 	"reflect"
 	"strings"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip86"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip86"
 )
 
 type RelayManagementAPI struct {

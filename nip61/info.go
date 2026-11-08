@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"slices"
 
-	"fiatjaf.com/nostr"
 	"github.com/elnosh/gonuts/cashu"
+	"github.com/nosuta/nostr"
 )
 
 type Info struct {

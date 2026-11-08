@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 	"golang.org/x/sync/errgroup"
 )
 

@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"log"
 
-	"fiatjaf.com/nostr"
 	"github.com/PowerDNS/lmdb-go/lmdb"
+	"github.com/nosuta/nostr"
 )
 
 const target = 2

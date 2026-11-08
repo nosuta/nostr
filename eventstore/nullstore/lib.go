@@ -3,8 +3,8 @@ package nullstore
 import (
 	"iter"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore"
 )
 
 var _ eventstore.Store = NullStore{}

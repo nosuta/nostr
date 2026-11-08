@@ -5,10 +5,10 @@ import (
 	"encoding/binary"
 	"slices"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore/codec/betterbinary"
-	"fiatjaf.com/nostr/nip45"
-	"fiatjaf.com/nostr/nip45/hyperloglog"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore/codec/betterbinary"
+	"github.com/nosuta/nostr/nip45"
+	"github.com/nosuta/nostr/nip45/hyperloglog"
 	"github.com/templexxx/xhex"
 	"go.etcd.io/bbolt"
 )

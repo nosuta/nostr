@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 // List retrieves a list of blobs from a specific pubkey

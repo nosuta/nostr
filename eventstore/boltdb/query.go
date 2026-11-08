@@ -6,9 +6,9 @@ import (
 	"math"
 	"slices"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore/codec/betterbinary"
-	"fiatjaf.com/nostr/eventstore/internal"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore/codec/betterbinary"
+	"github.com/nosuta/nostr/eventstore/internal"
 	"go.etcd.io/bbolt"
 )
 

@@ -3,7 +3,7 @@ package khatru
 import (
 	"context"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 const (

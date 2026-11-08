@@ -5,7 +5,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 var outboxShortTermCache = [256]atomic.Pointer[ostcEntry]{}

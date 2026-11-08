@@ -5,8 +5,8 @@ import (
 	"encoding/binary"
 	"slices"
 
-	"fiatjaf.com/nostr"
 	"github.com/PowerDNS/lmdb-go/lmdb"
+	"github.com/nosuta/nostr"
 )
 
 func (b *MultiMmapManager) Rescan() error {

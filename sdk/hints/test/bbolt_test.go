@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"fiatjaf.com/nostr/sdk/hints/bbolth"
+	"github.com/nosuta/nostr/sdk/hints/bbolth"
 )
 
 func TestBoltHints(t *testing.T) {

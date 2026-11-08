@@ -5,13 +5,13 @@ import (
 	"fmt"
 	"slices"
 
-	"fiatjaf.com/nostr/nip60/client"
 	"github.com/btcsuite/btcd/btcec/v2"
 	"github.com/elnosh/gonuts/cashu"
 	"github.com/elnosh/gonuts/cashu/nuts/nut02"
 	"github.com/elnosh/gonuts/cashu/nuts/nut03"
 	"github.com/elnosh/gonuts/cashu/nuts/nut10"
 	"github.com/elnosh/gonuts/cashu/nuts/nut13"
+	"github.com/nosuta/nostr/nip60/client"
 )
 
 type swapSettings struct {
@@ -151,12 +151,12 @@ func splitIntoPrincipalAndChange(
 	}
 
 	return preparedOutputs{
-			bm:      bm[0:changeStartIndex],
-			rs:      rs[0:changeStartIndex],
-			secrets: secrets[0:changeStartIndex],
-		}, preparedOutputs{
-			bm:      bm[changeStartIndex:],
-			rs:      rs[changeStartIndex:],
-			secrets: secrets[changeStartIndex:],
-		}, nil
+		bm:      bm[0:changeStartIndex],
+		rs:      rs[0:changeStartIndex],
+		secrets: secrets[0:changeStartIndex],
+	}, preparedOutputs{
+		bm:      bm[changeStartIndex:],
+		rs:      rs[changeStartIndex:],
+		secrets: secrets[changeStartIndex:],
+	}, nil
 }

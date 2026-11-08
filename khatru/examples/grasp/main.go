@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"os"
 
-	"fiatjaf.com/nostr/eventstore/lmdb"
-	"fiatjaf.com/nostr/khatru"
-	"fiatjaf.com/nostr/khatru/grasp"
+	"github.com/nosuta/nostr/eventstore/lmdb"
+	"github.com/nosuta/nostr/khatru"
+	"github.com/nosuta/nostr/khatru/grasp"
 )
 
 func main() {

@@ -217,7 +217,7 @@ func (r *Relay) newConnection(ctx context.Context, httpClient *http.Client) erro
 
 	// dialOpts := &ws.DialOptions{
 	// 	HTTPHeader: http.Header{
-	// 		textproto.CanonicalMIMEHeaderKey("User-Agent"): {"fiatjaf.com/nostr"},
+	// 		textproto.CanonicalMIMEHeaderKey("User-Agent"): {"github.com/nosuta/nostr"},
 	// 	},
 	// 	CompressionMode: ws.CompressionContextTakeover,
 	// 	HTTPClient:      httpClient,

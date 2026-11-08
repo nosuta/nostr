@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"time"
 
-	"fiatjaf.com/nostr/nip60/client"
 	"github.com/elnosh/gonuts/cashu"
 	"github.com/elnosh/gonuts/cashu/nuts/nut02"
 	"github.com/elnosh/gonuts/cashu/nuts/nut04"
 	"github.com/elnosh/gonuts/cashu/nuts/nut05"
 	"github.com/elnosh/gonuts/cashu/nuts/nut10"
+	"github.com/nosuta/nostr/nip60/client"
 )
 
 type lightningSwapStatus int

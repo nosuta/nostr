@@ -4,7 +4,7 @@ import (
 	"iter"
 	"slices"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 // SortedMerge combines two iterators and returns the top limit results aggregated from both.

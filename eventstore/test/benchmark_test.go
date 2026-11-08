@@ -6,10 +6,10 @@ import (
 	"os"
 	"testing"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore"
-	"fiatjaf.com/nostr/eventstore/lmdb"
-	"fiatjaf.com/nostr/eventstore/slicestore"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore"
+	"github.com/nosuta/nostr/eventstore/lmdb"
+	"github.com/nosuta/nostr/eventstore/slicestore"
 )
 
 func BenchmarkSliceStore(b *testing.B) {

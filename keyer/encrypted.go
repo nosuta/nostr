@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip44"
-	"fiatjaf.com/nostr/nip49"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip44"
+	"github.com/nosuta/nostr/nip49"
 )
 
 var _ nostr.Keyer = (*EncryptedKeySigner)(nil)

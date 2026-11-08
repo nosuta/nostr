@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"fiatjaf.com/nostr/sdk/hints/lmdbh"
+	"github.com/nosuta/nostr/sdk/hints/lmdbh"
 )
 
 func TestLMDBHints(t *testing.T) {

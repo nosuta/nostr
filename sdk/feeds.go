@@ -6,7 +6,7 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 const (

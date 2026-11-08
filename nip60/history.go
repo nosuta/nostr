@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 type HistoryEntry struct {

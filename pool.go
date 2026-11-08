@@ -11,7 +11,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"fiatjaf.com/nostr/nip45/hyperloglog"
+	"github.com/nosuta/nostr/nip45/hyperloglog"
 )
 
 const (

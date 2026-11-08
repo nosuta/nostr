@@ -1,7 +1,7 @@
 package test
 
 import (
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 func getTimestamps(events []*nostr.Event) []nostr.Timestamp {

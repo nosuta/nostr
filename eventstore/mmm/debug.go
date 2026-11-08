@@ -3,8 +3,8 @@ package mmm
 import (
 	"encoding/binary"
 
-	"fiatjaf.com/nostr"
 	"github.com/PowerDNS/lmdb-go/lmdb"
+	"github.com/nosuta/nostr"
 )
 
 func (b *MultiMmapManager) DebugAtPosition(offset uint64) (idPrefix []byte, layers []*IndexingLayer) {

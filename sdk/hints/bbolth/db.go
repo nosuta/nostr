@@ -5,8 +5,8 @@ import (
 	"math"
 	"slices"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/sdk/hints"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/sdk/hints"
 	"go.etcd.io/bbolt"
 )
 

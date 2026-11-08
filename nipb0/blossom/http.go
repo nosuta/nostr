@@ -8,7 +8,7 @@ import (
 	"io"
 	"strconv"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 	"github.com/valyala/fasthttp"
 )
 

@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"strings"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 type Request struct {

@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"math"
 
-	"fiatjaf.com/nostr"
 	"github.com/btcsuite/btcd/btcutil/bech32"
+	"github.com/nosuta/nostr"
 	"golang.org/x/crypto/chacha20poly1305"
 	"golang.org/x/crypto/scrypt"
 	"golang.org/x/text/transform"

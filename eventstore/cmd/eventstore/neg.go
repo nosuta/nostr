@@ -8,10 +8,10 @@ import (
 	"os"
 	"sync"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip77/negentropy"
-	"fiatjaf.com/nostr/nip77/negentropy/storage/vector"
 	"github.com/mailru/easyjson"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip77/negentropy"
+	"github.com/nosuta/nostr/nip77/negentropy/storage/vector"
 	"github.com/urfave/cli/v3"
 )
 

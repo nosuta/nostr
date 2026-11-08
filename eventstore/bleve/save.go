@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 func (b *BleveBackend) SaveEvent(evt nostr.Event) error {

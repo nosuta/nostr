@@ -8,8 +8,8 @@ import (
 	"net/url"
 	"strings"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip44"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip44"
 )
 
 var NoConnectionReceived = errors.New("relay connections ended without a bunker connection established")

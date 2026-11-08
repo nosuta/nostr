@@ -1,7 +1,7 @@
 package hints
 
 import (
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 type RelayScores struct {

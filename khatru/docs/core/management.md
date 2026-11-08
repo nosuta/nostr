@@ -6,7 +6,7 @@ outline: deep
 
 [NIP-86](https://nips.nostr.com/86) specifies a set of RPC methods for managing the boring aspects of relays, such as whitelisting or banning users, banning individual events, banning IPs and so on.
 
-All [`khatru.Relay`](https://pkg.go.dev/fiatjaf.com/nostr/khatru#Relay) instances expose a field `ManagementAPI` with a [`RelayManagementAPI`](https://pkg.go.dev/fiatjaf.com/nostr/khatru#RelayManagementAPI) instance inside, which can be used for creating handlers for each of the RPC methods.
+All [`khatru.Relay`](https://pkg.go.dev/github.com/nosuta/nostr/khatru#Relay) instances expose a field `ManagementAPI` with a [`RelayManagementAPI`](https://pkg.go.dev/github.com/nosuta/nostr/khatru#RelayManagementAPI) instance inside, which can be used for creating handlers for each of the RPC methods.
 
 There is also a generic `RejectAPICall` which is a slice of functions that will be called before any RPC method, if they exist and, if any of them returns true, the request will be rejected.
 

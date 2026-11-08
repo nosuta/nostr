@@ -3,7 +3,7 @@ package lmdbh
 import (
 	"encoding/binary"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 func encodeKey(pubhintkey nostr.PubKey, relay string) []byte {

@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"sync"
 
-	"fiatjaf.com/nostr"
 	"github.com/fasthttp/websocket"
+	"github.com/nosuta/nostr"
 	"github.com/puzpuzpuz/xsync/v3"
 )
 

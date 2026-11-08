@@ -6,11 +6,11 @@ import (
 	"strings"
 	"time"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip60"
-	"fiatjaf.com/nostr/nip60/client"
-	"fiatjaf.com/nostr/nip61"
 	"github.com/btcsuite/btcd/btcec/v2"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip60"
+	"github.com/nosuta/nostr/nip60/client"
+	"github.com/nosuta/nostr/nip61"
 	"github.com/tidwall/gjson"
 )
 

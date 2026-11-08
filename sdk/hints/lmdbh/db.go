@@ -7,9 +7,9 @@ import (
 	"os"
 	"slices"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/sdk/hints"
 	"github.com/PowerDNS/lmdb-go/lmdb"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/sdk/hints"
 )
 
 var _ hints.HintsDB = (*LMDBHints)(nil)

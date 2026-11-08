@@ -5,8 +5,8 @@ package nip46
 import (
 	"unsafe"
 
-	"fiatjaf.com/nostr"
 	"github.com/mailru/easyjson"
+	"github.com/nosuta/nostr"
 	"github.com/puzpuzpuz/xsync/v3"
 )
 

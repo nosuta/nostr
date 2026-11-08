@@ -4,7 +4,7 @@ import (
 	"strings"
 	"time"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 	"github.com/valyala/fasthttp"
 )
 

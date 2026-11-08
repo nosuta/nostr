@@ -3,8 +3,8 @@ package bleve
 import (
 	"fmt"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore"
 )
 
 func (b *BleveBackend) ReplaceEvent(evt nostr.Event) error {

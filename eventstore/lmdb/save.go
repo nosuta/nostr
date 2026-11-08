@@ -3,10 +3,10 @@ package lmdb
 import (
 	"fmt"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore"
-	"fiatjaf.com/nostr/eventstore/codec/betterbinary"
 	"github.com/PowerDNS/lmdb-go/lmdb"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore"
+	"github.com/nosuta/nostr/eventstore/codec/betterbinary"
 )
 
 func (b *LMDBBackend) SaveEvent(evt nostr.Event) error {

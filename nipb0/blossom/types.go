@@ -3,7 +3,7 @@ package blossom
 import (
 	"encoding/json"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 // BlobDescriptor represents metadata about a blob stored on a media server

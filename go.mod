@@ -1,4 +1,4 @@
-module fiatjaf.com/nostr
+module github.com/nosuta/nostr
 
 go 1.25
 

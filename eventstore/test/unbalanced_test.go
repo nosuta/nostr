@@ -6,8 +6,8 @@ import (
 	"slices"
 	"testing"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore"
 	"github.com/stretchr/testify/require"
 )
 

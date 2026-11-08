@@ -9,7 +9,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 // UploadFilePath uploads a file to the media server, takes a filepath

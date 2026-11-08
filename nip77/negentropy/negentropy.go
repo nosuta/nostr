@@ -7,7 +7,7 @@ import (
 	"math"
 	"unsafe"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 const (

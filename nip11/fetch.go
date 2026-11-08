@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"time"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 // Fetch fetches the NIP-11 metadata for a relay.

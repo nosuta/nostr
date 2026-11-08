@@ -5,9 +5,9 @@ import (
 	"encoding/binary"
 	"slices"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore/codec/betterbinary"
 	"github.com/PowerDNS/lmdb-go/lmdb"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore/codec/betterbinary"
 )
 
 func (il *IndexingLayer) CountEvents(filter nostr.Filter) (uint32, error) {

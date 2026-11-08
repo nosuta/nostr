@@ -11,11 +11,11 @@ import (
 	"testing"
 	"time"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/keyer"
-	"fiatjaf.com/nostr/khatru"
-	khatru_blossom "fiatjaf.com/nostr/khatru/blossom"
-	blossomclient "fiatjaf.com/nostr/nipb0/blossom"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/keyer"
+	"github.com/nosuta/nostr/khatru"
+	khatru_blossom "github.com/nosuta/nostr/khatru/blossom"
+	blossomclient "github.com/nosuta/nostr/nipb0/blossom"
 )
 
 func TestBlossomBasicOperations(t *testing.T) {

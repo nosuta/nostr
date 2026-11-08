@@ -11,9 +11,9 @@ import (
 	"syscall"
 	"unsafe"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore/codec/betterbinary"
 	"github.com/PowerDNS/lmdb-go/lmdb"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore/codec/betterbinary"
 	"github.com/rs/zerolog"
 )
 

@@ -3,7 +3,7 @@ package nip60
 import (
 	"context"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 // DropToken silently abandons a token

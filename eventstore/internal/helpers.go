@@ -3,7 +3,7 @@ package internal
 import (
 	"math"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 func ChooseNarrowestTag(filter nostr.Filter) (key string, values []string, goodness int) {

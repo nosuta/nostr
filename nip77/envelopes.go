@@ -6,7 +6,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 	"github.com/tidwall/gjson"
 )
 

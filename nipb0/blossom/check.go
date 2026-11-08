@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 // Check checks if a file exists on the media server by its hash

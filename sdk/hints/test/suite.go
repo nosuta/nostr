@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/sdk/hints"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/sdk/hints"
 	"github.com/stretchr/testify/require"
 )
 

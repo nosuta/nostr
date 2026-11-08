@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"slices"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip60/client"
 	"github.com/elnosh/gonuts/cashu"
 	"github.com/elnosh/gonuts/cashu/nuts/nut10"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip60/client"
 )
 
 // ReceiveOptions contains options for receiving tokens

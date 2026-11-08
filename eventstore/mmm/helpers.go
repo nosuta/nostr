@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"strings"
 
-	"fiatjaf.com/nostr"
 	"github.com/PowerDNS/lmdb-go/lmdb"
+	"github.com/nosuta/nostr"
 	"github.com/templexxx/xhex"
 )
 

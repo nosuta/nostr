@@ -5,8 +5,8 @@ import (
 	"encoding/binary"
 	"fmt"
 
-	"fiatjaf.com/nostr"
 	"github.com/btcsuite/btcd/btcutil/bech32"
+	"github.com/nosuta/nostr"
 )
 
 func Decode(bech32string string) (prefix string, value any, err error) {

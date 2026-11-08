@@ -5,10 +5,10 @@ import (
 	"errors"
 	"unsafe"
 
-	nostr "fiatjaf.com/nostr"
 	easyjson "github.com/mailru/easyjson"
 	jlexer "github.com/mailru/easyjson/jlexer"
 	jwriter "github.com/mailru/easyjson/jwriter"
+	nostr "github.com/nosuta/nostr"
 )
 
 // suppress unused package warning

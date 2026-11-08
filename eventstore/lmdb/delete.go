@@ -3,9 +3,9 @@ package lmdb
 import (
 	"fmt"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore/codec/betterbinary"
 	"github.com/PowerDNS/lmdb-go/lmdb"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore/codec/betterbinary"
 )
 
 func (b *LMDBBackend) DeleteEvent(id nostr.ID) error {

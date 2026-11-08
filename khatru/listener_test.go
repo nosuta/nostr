@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 	"github.com/stretchr/testify/require"
 )
 

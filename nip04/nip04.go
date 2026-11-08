@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"strings"
 
-	"fiatjaf.com/nostr"
 	"github.com/btcsuite/btcd/btcec/v2"
+	"github.com/nosuta/nostr"
 )
 
 // ComputeSharedSecret returns a shared secret key used to encrypt messages.

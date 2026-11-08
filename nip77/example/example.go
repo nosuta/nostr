@@ -7,10 +7,10 @@ import (
 	"slices"
 	"time"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore/slicestore"
-	"fiatjaf.com/nostr/eventstore/wrappers"
-	"fiatjaf.com/nostr/nip77"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore/slicestore"
+	"github.com/nosuta/nostr/eventstore/wrappers"
+	"github.com/nosuta/nostr/nip77"
 )
 
 func main() {

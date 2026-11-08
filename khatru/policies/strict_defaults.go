@@ -3,7 +3,7 @@ package policies
 import (
 	"time"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 var EventRejectionStrictDefaults = SeqEvent(

@@ -4,8 +4,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"fiatjaf.com/nostr/eventstore"
 	"github.com/PowerDNS/lmdb-go/lmdb"
+	"github.com/nosuta/nostr/eventstore"
 )
 
 var _ eventstore.Store = (*IndexingLayer)(nil)

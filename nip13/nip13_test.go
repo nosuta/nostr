@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	nostr "fiatjaf.com/nostr"
+	nostr "github.com/nosuta/nostr"
 	"github.com/stretchr/testify/require"
 )
 

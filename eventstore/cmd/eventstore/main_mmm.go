@@ -6,8 +6,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"fiatjaf.com/nostr/eventstore"
-	"fiatjaf.com/nostr/eventstore/mmm"
+	"github.com/nosuta/nostr/eventstore"
+	"github.com/nosuta/nostr/eventstore/mmm"
 	"github.com/rs/zerolog"
 )
 

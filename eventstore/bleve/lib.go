@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"sync"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore"
 	bleve "github.com/blevesearch/bleve/v2"
 	bleveMapping "github.com/blevesearch/bleve/v2/mapping"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore"
 )
 
 var _ eventstore.Store = (*BleveBackend)(nil)

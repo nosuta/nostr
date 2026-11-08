@@ -3,8 +3,8 @@ package empty
 import (
 	"iter"
 
-	"fiatjaf.com/nostr/nip77/negentropy"
-	"fiatjaf.com/nostr/nip77/negentropy/storage"
+	"github.com/nosuta/nostr/nip77/negentropy"
+	"github.com/nosuta/nostr/nip77/negentropy/storage"
 )
 
 var acc storage.Accumulator

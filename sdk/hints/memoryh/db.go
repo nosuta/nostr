@@ -6,8 +6,8 @@ import (
 	"slices"
 	"sync"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/sdk/hints"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/sdk/hints"
 )
 
 var _ hints.HintsDB = (*HintDB)(nil)

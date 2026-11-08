@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/keyer"
 	"github.com/btcsuite/btcd/btcec/v2"
 	"github.com/elnosh/gonuts/cashu"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/keyer"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/exp/rand"
 )

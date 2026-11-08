@@ -3,7 +3,7 @@ package policies
 import (
 	"context"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 func SeqEvent(

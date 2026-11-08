@@ -3,7 +3,7 @@ package nip19
 import (
 	"fmt"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 func EncodePointer(pointer nostr.Pointer) string {

@@ -5,7 +5,7 @@ import (
 	"errors"
 	"slices"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 var ErrSubscriptionClosedByClient = errors.New("subscription closed by client")

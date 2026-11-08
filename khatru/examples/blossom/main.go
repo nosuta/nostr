@@ -8,9 +8,9 @@ import (
 	"net/url"
 	"strings"
 
-	"fiatjaf.com/nostr/eventstore/lmdb"
-	"fiatjaf.com/nostr/khatru"
-	"fiatjaf.com/nostr/khatru/blossom"
+	"github.com/nosuta/nostr/eventstore/lmdb"
+	"github.com/nosuta/nostr/khatru"
+	"github.com/nosuta/nostr/khatru/blossom"
 )
 
 func main() {

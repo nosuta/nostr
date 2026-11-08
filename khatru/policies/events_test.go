@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 func TestRejectUnprefixedNostrReferences(t *testing.T) {

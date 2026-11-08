@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"strings"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 type IMeta []IMetaEntry

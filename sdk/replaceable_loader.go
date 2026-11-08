@@ -9,8 +9,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/sdk/dataloader"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/sdk/dataloader"
 )
 
 type replaceableIndex int

@@ -1,8 +1,8 @@
-# khatru, a relay framework [![docs badge](https://img.shields.io/badge/docs-reference-blue)](https://pkg.go.dev/fiatjaf.com/nostr/khatru#Relay)
+# khatru, a relay framework [![docs badge](https://img.shields.io/badge/docs-reference-blue)](https://pkg.go.dev/github.com/nosuta/nostr/khatru#Relay)
 
 [![Run Tests](https://github.com/fiatjaf/khatru/actions/workflows/test.yml/badge.svg)](https://github.com/fiatjaf/khatru/actions/workflows/test.yml)
-[![Go Reference](https://pkg.go.dev/badge/fiatjaf.com/nostr/khatru.svg)](https://pkg.go.dev/fiatjaf.com/nostr/khatru)
-[![Go Report Card](https://goreportcard.com/badge/fiatjaf.com/nostr/khatru)](https://goreportcard.com/report/fiatjaf.com/nostr/khatru)
+[![Go Reference](https://pkg.go.dev/badge/github.com/nosuta/nostr/khatru.svg)](https://pkg.go.dev/github.com/nosuta/nostr/khatru)
+[![Go Report Card](https://goreportcard.com/badge/github.com/nosuta/nostr/khatru)](https://goreportcard.com/report/github.com/nosuta/nostr/khatru)
 
 Khatru makes it easy to write very very custom relays:
 
@@ -22,8 +22,8 @@ import (
 	"log"
 	"net/http"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/khatru"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/khatru"
 )
 
 func main() {
@@ -108,7 +108,7 @@ func main() {
 
 ### But I don't want to write my own database!
 
-Fear no more. Using the [`fiatjaf.com/nostr/eventstore`](../eventstore) module you get a bunch of compatible databases out of the box and you can just plug them into your relay. For example, [`lmdb`](../eventstore/lmdb):
+Fear no more. Using the [`github.com/nosuta/nostr/eventstore`](../eventstore) module you get a bunch of compatible databases out of the box and you can just plug them into your relay. For example, [`lmdb`](../eventstore/lmdb):
 
 ```go
 	db := lmdb.LMDBackend{Path: "/tmp/khatru-lmdb-tmp"}
@@ -121,7 +121,7 @@ Fear no more. Using the [`fiatjaf.com/nostr/eventstore`](../eventstore) module y
 
 ### But I don't want to write a bunch of custom policies!
 
-Fear no more. We have a bunch of common policies written in the [`fiatjaf.com/nostr/khatru/policies`](policies) package and also a handpicked selection of base sane defaults, which you can apply with:
+Fear no more. We have a bunch of common policies written in the [`github.com/nosuta/nostr/khatru/policies`](policies) package and also a handpicked selection of base sane defaults, which you can apply with:
 
 ```go
 	policies.ApplySaneDefaults(relay)

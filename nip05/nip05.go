@@ -9,8 +9,8 @@ import (
 	"regexp"
 	"strings"
 
-	"fiatjaf.com/nostr"
 	"github.com/mailru/easyjson"
+	"github.com/nosuta/nostr"
 )
 
 var NIP05_REGEX = regexp.MustCompile(`^(?:([\w.+-]+)@)?([\w_-]+(\.[\w_-]+)+)$`)

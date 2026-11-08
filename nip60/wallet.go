@@ -8,11 +8,11 @@ import (
 	"sync"
 	"time"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip60/client"
 	"github.com/btcsuite/btcd/btcec/v2"
 	"github.com/decred/dcrd/dcrec/secp256k1/v4"
 	"github.com/elnosh/gonuts/cashu/nuts/nut13"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip60/client"
 )
 
 // WalletOptions contains options for loading a wallet

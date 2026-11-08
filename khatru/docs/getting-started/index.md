@@ -7,13 +7,13 @@ outline: deep
 Download the library:
 
 ```bash
-go get fiatjaf.com/nostr/khatru
+go get github.com/nosuta/nostr/khatru
 ```
 
 Include the library:
 
 ```go
-import "fiatjaf.com/nostr/khatru"
+import "github.com/nosuta/nostr/khatru"
 ```
 
 Then in your `main()` function, instantiate a new `Relay`:
@@ -31,7 +31,7 @@ relay.Info.Description = "this is my custom relay"
 relay.Info.Icon = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fliquipedia.net%2Fcommons%2Fimages%2F3%2F35%2FSCProbe.jpg&f=1&nofb=1&ipt=0cbbfef25bce41da63d910e86c3c343e6c3b9d63194ca9755351bb7c2efa3359&ipo=images"
 ```
 
-Now we must set up the basic functions for accepting events and answering queries. We could make our own querying engine from scratch, but we can also use [eventstore](https://pkg.go.dev/fiatjaf.com/nostr/eventstore). In this example we'll use the BoltDB adapter:
+Now we must set up the basic functions for accepting events and answering queries. We could make our own querying engine from scratch, but we can also use [eventstore](https://pkg.go.dev/github.com/nosuta/nostr/eventstore). In this example we'll use the BoltDB adapter:
 
 ```go
 db := boltdb.BoltBackend{Path: "/tmp/khatru-bolt-tmp"}
@@ -59,7 +59,7 @@ relay.OnEvent = func (ctx context.Context, event nostr.Event) (reject bool, msg 
 We can also make use of some default policies that come bundled with Khatru:
 
 ```go
-import "fiatjaf.com/nostr/khatru/policies" // implied
+import "github.com/nosuta/nostr/khatru/policies" // implied
 
 relay.OnEvent = policies.SeqEvent(
 	policies.PreventLargeTags(120),
@@ -68,7 +68,7 @@ relay.OnEvent = policies.SeqEvent(
 )
 ```
 
-There are many other ways to customize the relay behavior. Take a look at the [`Relay` struct docs](https://pkg.go.dev/fiatjaf.com/nostr/khatru#Relay) for more, or read the pages on the sidebar.
+There are many other ways to customize the relay behavior. Take a look at the [`Relay` struct docs](https://pkg.go.dev/github.com/nosuta/nostr/khatru#Relay) for more, or read the pages on the sidebar.
 
 The last step is actually running the server. Our relay is actually an `http.Handler`, so it can just be ran directly with `http.ListenAndServe()` from the standard library:
 

@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"fiatjaf.com/nostr/nip60/client"
 	"github.com/elnosh/gonuts/cashu"
 	"github.com/elnosh/gonuts/cashu/nuts/nut04"
+	"github.com/nosuta/nostr/nip60/client"
 )
 
 func (w *Wallet) SendExternal(

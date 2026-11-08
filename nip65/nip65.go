@@ -1,6 +1,6 @@
 package nip65
 
-import "fiatjaf.com/nostr"
+import "github.com/nosuta/nostr"
 
 // ParseRelayList parses a NIP-65 relay list event (kind 10002) and returns
 // separate lists of read and write relays based on the "r" tags.

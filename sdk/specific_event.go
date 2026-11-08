@@ -6,9 +6,9 @@ import (
 	"slices"
 	"sync"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip19"
-	"fiatjaf.com/nostr/sdk/hints"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip19"
+	"github.com/nosuta/nostr/sdk/hints"
 )
 
 // FetchSpecificEventParameters contains options for fetching specific events.

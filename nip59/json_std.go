@@ -3,8 +3,8 @@
 package nip59
 
 import (
-	"fiatjaf.com/nostr"
 	"github.com/mailru/easyjson"
+	"github.com/nosuta/nostr"
 )
 
 func unmarshalEvent(data []byte, evt *nostr.Event) error {

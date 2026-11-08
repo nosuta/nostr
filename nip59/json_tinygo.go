@@ -5,7 +5,7 @@ package nip59
 import (
 	"encoding/json"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 func unmarshalEvent(data []byte, evt *nostr.Event) error {

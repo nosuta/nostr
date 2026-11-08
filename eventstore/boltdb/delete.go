@@ -3,8 +3,8 @@ package boltdb
 import (
 	"fmt"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore/codec/betterbinary"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore/codec/betterbinary"
 	"go.etcd.io/bbolt"
 )
 

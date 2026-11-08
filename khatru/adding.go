@@ -5,9 +5,9 @@ import (
 	"errors"
 	"fmt"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore"
-	"fiatjaf.com/nostr/nip40"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore"
+	"github.com/nosuta/nostr/nip40"
 )
 
 // AddEvent sends an event through then normal add pipeline, as if it was received from a websocket.

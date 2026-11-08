@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip05"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip05"
 )
 
 func queryWellKnownNostrJson(ctx context.Context, fullname string) (pubkey nostr.PubKey, relays []string, err error) {

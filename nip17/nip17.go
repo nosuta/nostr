@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"strings"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip59"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip59"
 )
 
 func GetDMRelays(ctx context.Context, pubkey nostr.PubKey, pool *nostr.Pool, relaysToQuery []string) []string {

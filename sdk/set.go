@@ -5,8 +5,8 @@ import (
 	"slices"
 	"time"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/sdk/cache"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/sdk/cache"
 )
 
 // this is similar to list.go and inherits code from that.

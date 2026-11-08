@@ -1,6 +1,6 @@
 package nip14
 
-import "fiatjaf.com/nostr"
+import "github.com/nosuta/nostr"
 
 func GetSubject(tags nostr.Tags) string {
 	for _, tag := range tags {

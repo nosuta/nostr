@@ -8,10 +8,10 @@ import (
 	"math"
 	"slices"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore/codec/betterbinary"
-	"fiatjaf.com/nostr/eventstore/internal"
 	"github.com/PowerDNS/lmdb-go/lmdb"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore/codec/betterbinary"
+	"github.com/nosuta/nostr/eventstore/internal"
 )
 
 // GetByID returns the event -- if found in this mmm -- and all the IndexingLayers it belongs to.

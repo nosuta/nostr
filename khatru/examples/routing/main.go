@@ -5,10 +5,10 @@ import (
 	"net/http"
 	"slices"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore/lmdb"
-	"fiatjaf.com/nostr/eventstore/slicestore"
-	"fiatjaf.com/nostr/khatru"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore/lmdb"
+	"github.com/nosuta/nostr/eventstore/slicestore"
+	"github.com/nosuta/nostr/khatru"
 )
 
 func main() {

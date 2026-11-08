@@ -4,8 +4,8 @@ import (
 	"context"
 	"iter"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nipb0/blossom"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nipb0/blossom"
 )
 
 type BlobIndex interface {

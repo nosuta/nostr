@@ -3,7 +3,7 @@ package betterbinary
 import (
 	"encoding/binary"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 func GetKind(evtb []byte) nostr.Kind {

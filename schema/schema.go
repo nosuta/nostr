@@ -14,7 +14,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 	"gopkg.in/yaml.v3"
 )
 

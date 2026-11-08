@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"iter"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 	"go.etcd.io/bbolt"
 )
 

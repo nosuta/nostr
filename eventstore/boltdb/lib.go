@@ -3,8 +3,8 @@ package boltdb
 import (
 	"time"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore"
 	"go.etcd.io/bbolt"
 )
 

@@ -3,8 +3,8 @@ package sdk
 import (
 	"context"
 
-	"fiatjaf.com/nostr"
-	cache_memory "fiatjaf.com/nostr/sdk/cache/memory"
+	"github.com/nosuta/nostr"
+	cache_memory "github.com/nosuta/nostr/sdk/cache/memory"
 )
 
 type Topic string

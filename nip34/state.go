@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 type RepositoryState struct {

@@ -5,9 +5,9 @@ import (
 	"iter"
 	"strconv"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore"
-	"fiatjaf.com/nostr/nipb0/blossom"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore"
+	"github.com/nosuta/nostr/nipb0/blossom"
 )
 
 // EventStoreBlobIndexWrapper uses fake events to keep track of what blobs we have stored and who owns them

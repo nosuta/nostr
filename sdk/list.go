@@ -7,8 +7,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/sdk/cache"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/sdk/cache"
 )
 
 type GenericList[V comparable, I TagItemWithValue[V]] struct {

@@ -9,7 +9,6 @@ import (
 	"strconv"
 	"strings"
 
-	"fiatjaf.com/nostr"
 	"github.com/btcsuite/btcd/btcec/v2"
 	"github.com/btcsuite/btcd/btcec/v2/schnorr"
 	"github.com/decred/dcrd/dcrec/secp256k1/v4"
@@ -20,6 +19,7 @@ import (
 	"github.com/elnosh/gonuts/cashu/nuts/nut11"
 	"github.com/elnosh/gonuts/cashu/nuts/nut12"
 	"github.com/elnosh/gonuts/crypto"
+	"github.com/nosuta/nostr"
 )
 
 func calculateFee(inputs cashu.Proofs, keysets []nut02.Keyset) uint64 {

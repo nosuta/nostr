@@ -9,10 +9,10 @@ import (
 	"slices"
 	"strings"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip60"
 	"github.com/btcsuite/btcd/btcec/v2"
 	"github.com/elnosh/gonuts/cashu"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip60"
 )
 
 var NutzapsNotAccepted = errors.New("user doesn't accept nutzaps")

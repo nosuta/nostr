@@ -7,7 +7,7 @@ This is a new, much improved in all aspects, version of [go-nostr](https://githu
 ## Installation
 
 ```sh
-go get fiatjaf.com/nostr
+go get github.com/nosuta/nostr
 ```
 
 ## Components

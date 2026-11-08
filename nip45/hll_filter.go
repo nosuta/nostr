@@ -3,7 +3,7 @@ package nip45
 import (
 	"strconv"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 // HyperLogLogEventPubkeyOffsetForFilter returns the deterministic pubkey offset that will be used

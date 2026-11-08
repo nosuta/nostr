@@ -6,8 +6,8 @@ import (
 	"sync"
 	"time"
 
-	"fiatjaf.com/nostr"
 	"github.com/FastFilter/xorfilter"
+	"github.com/nosuta/nostr"
 	"golang.org/x/sync/errgroup"
 )
 

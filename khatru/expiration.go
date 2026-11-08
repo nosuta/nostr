@@ -8,8 +8,8 @@ import (
 	"sync"
 	"time"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip40"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip40"
 )
 
 type expiringEvent struct {

@@ -6,8 +6,8 @@ import (
 	"regexp"
 	"strings"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip19"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip19"
 )
 
 var asciiPattern = regexp.MustCompile(`^[\w-.]+$`)

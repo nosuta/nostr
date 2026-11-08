@@ -11,9 +11,9 @@ import (
 	"slices"
 	"strings"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip34"
 	"github.com/go-git/go-git/v5/plumbing/format/pktline"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip34"
 )
 
 const zeroRef = "0000000000000000000000000000000000000000"

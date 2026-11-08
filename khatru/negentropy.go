@@ -5,9 +5,9 @@ import (
 	"errors"
 	"fmt"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip77/negentropy"
-	"fiatjaf.com/nostr/nip77/negentropy/storage/vector"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip77/negentropy"
+	"github.com/nosuta/nostr/nip77/negentropy/storage/vector"
 )
 
 type NegentropySession struct {

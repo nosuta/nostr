@@ -1,8 +1,8 @@
 package nip22
 
 import (
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip73"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip73"
 )
 
 func GetThreadRoot(tags nostr.Tags) nostr.Pointer {

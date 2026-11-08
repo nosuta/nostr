@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"math"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 const (

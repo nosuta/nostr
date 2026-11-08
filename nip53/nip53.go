@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"time"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 type LiveEvent struct {

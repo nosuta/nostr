@@ -4,9 +4,9 @@ outline: deep
 
 # Implementing NIP-50 `search` support
 
-The [`nostr.Filter` type](https://pkg.go.dev/fiatjaf.com/nostr#Filter) has a `Search` field, so you basically just has to handle that if it's present.
+The [`nostr.Filter` type](https://pkg.go.dev/github.com/nosuta/nostr#Filter) has a `Search` field, so you basically just has to handle that if it's present.
 
-It can be tricky to implement fulltext search properly though, so the [bleve](https://pkg.go.dev/fiatjaf.com/nostr/eventstore/bleve) evenstore implements it natively and you can use it on top of another main eventstore:
+It can be tricky to implement fulltext search properly though, so the [bleve](https://pkg.go.dev/github.com/nosuta/nostr/eventstore/bleve) evenstore implements it natively and you can use it on top of another main eventstore:
 
 ```go
 func main () {
@@ -46,4 +46,4 @@ func main () {
 }
 ```
 
-Note that in this case we're using the [LMDB](https://pkg.go.dev/fiatjaf.com/nostr/eventstore/lmdb) adapter for normal queries and it explicitly rejects any filter that contains a `Search` field, while [Bleve](https://pkg.go.dev/fiatjaf.com/nostr/eventstore/bleve) rejects any filter _without_ a `Search` value, which make them pair well together.
+Note that in this case we're using the [LMDB](https://pkg.go.dev/github.com/nosuta/nostr/eventstore/lmdb) adapter for normal queries and it explicitly rejects any filter that contains a `Search` field, while [Bleve](https://pkg.go.dev/github.com/nosuta/nostr/eventstore/bleve) rejects any filter _without_ a `Search` value, which make them pair well together.

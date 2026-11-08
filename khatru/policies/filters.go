@@ -4,8 +4,8 @@ import (
 	"context"
 	"slices"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/khatru"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/khatru"
 )
 
 // NoComplexFilters disallows filters with more than 2 tags.

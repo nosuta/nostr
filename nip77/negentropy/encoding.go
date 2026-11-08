@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"fmt"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 func (br *BoundReader) ReadTimestamp(reader *bytes.Reader) (nostr.Timestamp, error) {

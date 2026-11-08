@@ -8,7 +8,7 @@ import (
 	"runtime"
 	"strconv"
 
-	nostr "fiatjaf.com/nostr"
+	nostr "github.com/nosuta/nostr"
 )
 
 var (

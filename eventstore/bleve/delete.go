@@ -1,7 +1,7 @@
 package bleve
 
 import (
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 func (b *BleveBackend) DeleteEvent(id nostr.ID) error {

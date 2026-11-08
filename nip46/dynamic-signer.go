@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"sync"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip44"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip44"
 )
 
 var _ Signer = (*DynamicSigner)(nil)

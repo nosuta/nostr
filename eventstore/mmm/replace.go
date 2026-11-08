@@ -5,8 +5,8 @@ import (
 	"iter"
 	"runtime"
 
-	"fiatjaf.com/nostr"
 	"github.com/PowerDNS/lmdb-go/lmdb"
+	"github.com/nosuta/nostr"
 )
 
 func (il *IndexingLayer) ReplaceEvent(evt nostr.Event) error {

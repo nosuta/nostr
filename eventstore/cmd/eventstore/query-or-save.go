@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 	"github.com/urfave/cli/v3"
 )
 

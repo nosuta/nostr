@@ -3,8 +3,8 @@ package policies
 import (
 	"context"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/schema"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/schema"
 )
 
 func ValidateAgainstSchema(v schema.Validator) func(ctx context.Context, evt nostr.Event) (bool, string) {

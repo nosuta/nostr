@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"os"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/khatru"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/khatru"
 )
 
 type GraspServer struct {

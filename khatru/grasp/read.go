@@ -9,7 +9,7 @@ import (
 	"os"
 	"os/exec"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 func (gs *GraspServer) handleGitUploadPack(

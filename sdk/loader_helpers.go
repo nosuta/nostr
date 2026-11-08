@@ -3,7 +3,7 @@ package sdk
 import (
 	"encoding/binary"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 var kvStoreLastFetchPrefix = byte('f')

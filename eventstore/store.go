@@ -3,7 +3,7 @@ package eventstore
 import (
 	"iter"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 // Store is a persistence layer for nostr events handled by a relay.

@@ -3,7 +3,7 @@ package sdk
 import (
 	"context"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 func (sys *System) SearchUsers(ctx context.Context, query string) []ProfileMetadata {

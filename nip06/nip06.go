@@ -1,7 +1,7 @@
 package nip06
 
 import (
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 	"github.com/tyler-smith/go-bip32"
 	"github.com/tyler-smith/go-bip39"
 )

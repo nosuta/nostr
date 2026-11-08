@@ -9,7 +9,7 @@ import (
 	"regexp"
 	"strings"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 	fetch "marwan.io/wasm-fetch"
 )
 

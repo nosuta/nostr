@@ -3,9 +3,9 @@ package sdk
 import (
 	"context"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip05"
-	"fiatjaf.com/nostr/nip19"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip05"
+	"github.com/nosuta/nostr/nip19"
 )
 
 // InputToProfile turns any npub/nprofile/hex/nip05 input into a ProfilePointer (or nil).

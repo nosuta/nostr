@@ -4,9 +4,9 @@ import (
 	"iter"
 	"slices"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip77/negentropy"
-	"fiatjaf.com/nostr/nip77/negentropy/storage"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip77/negentropy"
+	"github.com/nosuta/nostr/nip77/negentropy/storage"
 )
 
 type Vector struct {

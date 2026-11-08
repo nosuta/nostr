@@ -3,7 +3,7 @@ package nip34
 import (
 	"fmt"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 type Repository struct {

@@ -5,7 +5,7 @@ import (
 	"slices"
 	"strconv"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 var PTagNotValidPublicKey = fmt.Errorf("'p' tag value is not a valid public key")

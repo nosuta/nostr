@@ -11,11 +11,11 @@ import (
 	"sync"
 	"time"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore"
-	"fiatjaf.com/nostr/nip11"
-	"fiatjaf.com/nostr/nip45/hyperloglog"
 	"github.com/fasthttp/websocket"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore"
+	"github.com/nosuta/nostr/nip11"
+	"github.com/nosuta/nostr/nip45/hyperloglog"
 )
 
 func NewRelay() *Relay {
@@ -28,7 +28,7 @@ func NewRelay() *Relay {
 		Log: log.New(os.Stderr, "[khatru-relay] ", log.LstdFlags),
 
 		Info: &nip11.RelayInformationDocument{
-			Software:      "https://pkg.go.dev/fiatjaf.com/nostr/khatru",
+			Software:      "https://pkg.go.dev/github.com/nosuta/nostr/khatru",
 			Version:       "n/a",
 			SupportedNIPs: []any{1, 11, 42, 70, 86},
 		},

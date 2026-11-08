@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 // Delete deletes a file from the media server by its hash

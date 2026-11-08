@@ -3,7 +3,7 @@ package nip70
 import (
 	"strings"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 func IsProtected(event nostr.Event) bool {

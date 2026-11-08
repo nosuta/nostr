@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip60/client"
 	"github.com/elnosh/gonuts/cashu"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip60/client"
 )
 
 func (w *Wallet) SendInternal(ctx context.Context, amount uint64, opts SendOptions) (cashu.Proofs, string, error) {

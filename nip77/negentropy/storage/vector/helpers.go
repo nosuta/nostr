@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"cmp"
 
-	"fiatjaf.com/nostr/nip77/negentropy"
+	"github.com/nosuta/nostr/nip77/negentropy"
 )
 
 func itemCompare(a, b negentropy.Item) int {

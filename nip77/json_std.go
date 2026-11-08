@@ -5,9 +5,9 @@ package nip77
 import (
 	"bytes"
 
-	"fiatjaf.com/nostr"
 	"github.com/mailru/easyjson"
 	jwriter "github.com/mailru/easyjson/jwriter"
+	"github.com/nosuta/nostr"
 )
 
 func unmarshalFilter(data []byte, v *nostr.Filter) error {

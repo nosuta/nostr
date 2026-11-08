@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 func (rl *Relay) handleEphemeral(ctx context.Context, evt nostr.Event) error {

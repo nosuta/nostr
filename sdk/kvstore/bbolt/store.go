@@ -1,7 +1,7 @@
 package bbolt
 
 import (
-	"fiatjaf.com/nostr/sdk/kvstore"
+	"github.com/nosuta/nostr/sdk/kvstore"
 	"go.etcd.io/bbolt"
 )
 

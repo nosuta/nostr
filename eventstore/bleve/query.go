@@ -4,9 +4,9 @@ import (
 	"iter"
 	"strconv"
 
-	"fiatjaf.com/nostr"
 	bleve "github.com/blevesearch/bleve/v2"
 	"github.com/blevesearch/bleve/v2/search/query"
+	"github.com/nosuta/nostr"
 )
 
 func (b *BleveBackend) QueryEvents(filter nostr.Filter, maxLimit int) iter.Seq[nostr.Event] {

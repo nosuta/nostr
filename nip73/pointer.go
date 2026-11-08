@@ -1,6 +1,6 @@
 package nip73
 
-import "fiatjaf.com/nostr"
+import "github.com/nosuta/nostr"
 
 var _ nostr.Pointer = (*ExternalPointer)(nil)
 

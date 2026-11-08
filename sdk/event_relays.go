@@ -3,8 +3,8 @@ package sdk
 import (
 	"slices"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/sdk/kvstore"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/sdk/kvstore"
 )
 
 const eventRelayPrefix = byte('r')

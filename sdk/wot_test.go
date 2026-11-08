@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 	"github.com/stretchr/testify/require"
 )
 

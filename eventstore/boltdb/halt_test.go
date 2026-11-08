@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/khatru"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/khatru"
 	"github.com/stretchr/testify/require"
 )
 

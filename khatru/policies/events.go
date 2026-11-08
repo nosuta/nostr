@@ -9,11 +9,11 @@ import (
 	"strings"
 	"time"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip19"
-	"fiatjaf.com/nostr/nip27"
-	"fiatjaf.com/nostr/nip70"
-	"fiatjaf.com/nostr/sdk"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip19"
+	"github.com/nosuta/nostr/nip27"
+	"github.com/nosuta/nostr/nip70"
+	"github.com/nosuta/nostr/sdk"
 )
 
 // PreventTooManyIndexableTags returns a function that can be used as a RejectFilter that will reject

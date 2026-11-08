@@ -1,11 +1,11 @@
 package checks
 
 import (
-	"fiatjaf.com/nostr/eventstore"
-	"fiatjaf.com/nostr/eventstore/bleve"
-	"fiatjaf.com/nostr/eventstore/boltdb"
-	"fiatjaf.com/nostr/eventstore/lmdb"
-	"fiatjaf.com/nostr/eventstore/mmm"
+	"github.com/nosuta/nostr/eventstore"
+	"github.com/nosuta/nostr/eventstore/bleve"
+	"github.com/nosuta/nostr/eventstore/boltdb"
+	"github.com/nosuta/nostr/eventstore/lmdb"
+	"github.com/nosuta/nostr/eventstore/mmm"
 )
 
 // compile-time checks to ensure all backends implement Store

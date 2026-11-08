@@ -3,7 +3,7 @@ package keyer
 import (
 	"context"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 var _ nostr.Keyer = (*ManualSigner)(nil)

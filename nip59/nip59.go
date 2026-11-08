@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"math/rand"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip44"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip44"
 )
 
 // GiftWrap takes a 'rumor', encrypts it with our own key, making a 'seal', then encrypts that with a nonce key and

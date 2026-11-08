@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"iter"
 
-	"fiatjaf.com/nostr"
 	"github.com/PowerDNS/lmdb-go/lmdb"
+	"github.com/nosuta/nostr"
 )
 
 func (b *LMDBBackend) ReplaceEvent(evt nostr.Event) error {

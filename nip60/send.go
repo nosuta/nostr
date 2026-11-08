@@ -5,13 +5,13 @@ import (
 	"fmt"
 	"slices"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip60/client"
 	"github.com/btcsuite/btcd/btcec/v2"
 	"github.com/elnosh/gonuts/cashu"
 	"github.com/elnosh/gonuts/cashu/nuts/nut02"
 	"github.com/elnosh/gonuts/cashu/nuts/nut10"
 	"github.com/elnosh/gonuts/cashu/nuts/nut11"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip60/client"
 )
 
 // SendOptions contains options for sending tokens

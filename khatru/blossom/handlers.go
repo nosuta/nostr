@@ -12,9 +12,9 @@ import (
 	"strings"
 	"time"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nipb0/blossom"
 	"github.com/liamg/magic"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nipb0/blossom"
 )
 
 type mirrorRequest struct {

@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"strings"
 
-	"fiatjaf.com/nostr"
 	"github.com/mailru/easyjson"
+	"github.com/nosuta/nostr"
 )
 
 func readAuthorization(r *http.Request) (*nostr.Event, error) {

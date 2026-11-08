@@ -5,12 +5,12 @@ import (
 	"os"
 	"testing"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore"
-	"fiatjaf.com/nostr/eventstore/boltdb"
-	"fiatjaf.com/nostr/eventstore/lmdb"
-	"fiatjaf.com/nostr/eventstore/mmm"
-	"fiatjaf.com/nostr/eventstore/slicestore"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore"
+	"github.com/nosuta/nostr/eventstore/boltdb"
+	"github.com/nosuta/nostr/eventstore/lmdb"
+	"github.com/nosuta/nostr/eventstore/mmm"
+	"github.com/nosuta/nostr/eventstore/slicestore"
 	"github.com/rs/zerolog"
 	"github.com/stretchr/testify/require"
 )

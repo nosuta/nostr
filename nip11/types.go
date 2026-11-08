@@ -3,7 +3,7 @@ package nip11
 import (
 	"slices"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 type RelayInformationDocument struct {

@@ -1,7 +1,7 @@
 package khatru
 
 import (
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 // BroadcastEvent emits an event to all listeners whose filters' match, skipping all filters and actions

@@ -1,8 +1,8 @@
 package wrappers
 
 import (
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore"
 )
 
 // UniqueReactionsWrapper ensures that only the latest reaction or poll response from an author to an event is kept.

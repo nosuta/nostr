@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore/lmdb"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore/lmdb"
 	"github.com/stretchr/testify/require"
 )
 

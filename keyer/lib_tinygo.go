@@ -8,11 +8,11 @@ import (
 	"strings"
 	"time"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip05"
-	"fiatjaf.com/nostr/nip19"
-	"fiatjaf.com/nostr/nip46"
-	"fiatjaf.com/nostr/nip49"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip05"
+	"github.com/nosuta/nostr/nip19"
+	"github.com/nosuta/nostr/nip46"
+	"github.com/nosuta/nostr/nip49"
 )
 
 var (

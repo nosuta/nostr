@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"strconv"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 // GetAmountFromZap takes a zap receipt event (kind 9735) and returns the amount in millisats.

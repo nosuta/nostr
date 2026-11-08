@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"fiatjaf.com/nostr"
 	"github.com/elnosh/gonuts/cashu"
+	"github.com/nosuta/nostr"
 )
 
 type Token struct {

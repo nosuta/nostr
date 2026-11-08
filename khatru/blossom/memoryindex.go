@@ -6,8 +6,8 @@ import (
 	"iter"
 	"slices"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nipb0/blossom"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nipb0/blossom"
 	"github.com/puzpuzpuz/xsync/v3"
 )
 

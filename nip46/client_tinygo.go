@@ -5,7 +5,7 @@ package nip46
 import (
 	"sync"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 type listenersMap struct {

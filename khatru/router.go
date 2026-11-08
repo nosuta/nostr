@@ -1,7 +1,7 @@
 package khatru
 
 import (
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 type Router struct{ *Relay }

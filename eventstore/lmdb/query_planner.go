@@ -4,9 +4,9 @@ import (
 	"encoding/binary"
 	"fmt"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore/internal"
 	"github.com/PowerDNS/lmdb-go/lmdb"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore/internal"
 	"github.com/templexxx/xhex"
 )
 

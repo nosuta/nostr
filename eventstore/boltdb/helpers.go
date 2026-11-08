@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"strings"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 	"github.com/templexxx/xhex"
 	"go.etcd.io/bbolt"
 )

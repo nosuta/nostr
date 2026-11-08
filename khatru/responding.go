@@ -5,8 +5,8 @@ import (
 	"errors"
 	"sync"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip45/hyperloglog"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip45/hyperloglog"
 )
 
 func (rl *Relay) handleRequest(ctx context.Context, id string, eose *sync.WaitGroup, ws *WebSocket, filter nostr.Filter) error {

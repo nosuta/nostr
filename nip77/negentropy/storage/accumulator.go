@@ -4,7 +4,7 @@ import (
 	"crypto/sha256"
 	"encoding/binary"
 
-	"fiatjaf.com/nostr/nip77/negentropy"
+	"github.com/nosuta/nostr/nip77/negentropy"
 )
 
 type Accumulator struct {

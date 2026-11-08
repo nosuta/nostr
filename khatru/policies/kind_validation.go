@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 func ValidateKind(ctx context.Context, evt nostr.Event) (bool, string) {

@@ -3,8 +3,8 @@ package boltdb
 import (
 	"encoding/binary"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore/internal"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore/internal"
 )
 
 type query struct {

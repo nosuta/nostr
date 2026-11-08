@@ -6,8 +6,8 @@ import (
 	"runtime"
 	"slices"
 
-	"fiatjaf.com/nostr"
 	"github.com/PowerDNS/lmdb-go/lmdb"
+	"github.com/nosuta/nostr"
 )
 
 func (il *IndexingLayer) DeleteEvent(id nostr.ID) error {

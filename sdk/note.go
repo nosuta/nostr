@@ -6,9 +6,9 @@ import (
 	"strings"
 	"time"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip19"
-	"fiatjaf.com/nostr/nip27"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip19"
+	"github.com/nosuta/nostr/nip27"
 )
 
 var (

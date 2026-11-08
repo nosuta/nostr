@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 // Download downloads a file from the media server by its hash

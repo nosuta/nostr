@@ -12,8 +12,8 @@ import (
 	"sync"
 	"time"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip34"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip34"
 )
 
 func (gs *GraspServer) handleGitReceivePack(

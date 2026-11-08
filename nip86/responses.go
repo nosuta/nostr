@@ -1,6 +1,6 @@
 package nip86
 
-import "fiatjaf.com/nostr"
+import "github.com/nosuta/nostr"
 
 type IDReason struct {
 	ID     nostr.ID `json:"id"`

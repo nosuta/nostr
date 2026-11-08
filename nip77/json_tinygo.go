@@ -6,7 +6,7 @@ import (
 	"bytes"
 	"encoding/json"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 func unmarshalFilter(data []byte, v *nostr.Filter) error {

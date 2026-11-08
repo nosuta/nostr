@@ -22,10 +22,10 @@ jobs:
         run: |
           # すべてのパッケージを取得し除外
           PKGS=$(go list ./... | grep -v \
-            -e 'fiatjaf.com/nostr/schema' \
-            -e 'fiatjaf.com/nostr/nip29' \
-            -e 'fiatjaf.com/nostr/khatru' \
-            -e 'fiatjaf.com/nostr/sdk')
+            -e 'github.com/nosuta/nostr/schema' \
+            -e 'github.com/nosuta/nostr/nip29' \
+            -e 'github.com/nosuta/nostr/khatru' \
+            -e 'github.com/nosuta/nostr/sdk')
           go test $PKGS
 
   test-wasm-go:

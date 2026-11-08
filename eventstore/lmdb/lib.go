@@ -6,9 +6,9 @@ import (
 	"os"
 	"sync/atomic"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/eventstore"
 	"github.com/PowerDNS/lmdb-go/lmdb"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/eventstore"
 )
 
 var _ eventstore.Store = (*LMDBBackend)(nil)

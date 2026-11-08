@@ -1,7 +1,7 @@
 package nip19
 
 import (
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 func NeventFromRelayEvent(ie nostr.RelayEvent) string {

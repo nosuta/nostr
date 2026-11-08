@@ -9,7 +9,7 @@ import (
 	"os/exec"
 	"strings"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 // handleInfoRefs handles the git info/refs endpoint

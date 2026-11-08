@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"time"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 	fetch "marwan.io/wasm-fetch"
 )
 

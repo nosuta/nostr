@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"strings"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 // MirrorBlob mirrors a blob from a remote URL to the media server

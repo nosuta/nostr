@@ -3,9 +3,9 @@ package sdk
 import (
 	"net/url"
 
-	"fiatjaf.com/nostr"
-	"fiatjaf.com/nostr/nip27"
-	"fiatjaf.com/nostr/sdk/hints"
+	"github.com/nosuta/nostr"
+	"github.com/nosuta/nostr/nip27"
+	"github.com/nosuta/nostr/sdk/hints"
 )
 
 func (sys *System) TrackQueryAttempts(relay string, author nostr.PubKey, kind nostr.Kind) {

@@ -3,7 +3,7 @@ package bbolth
 import (
 	"encoding/binary"
 
-	"fiatjaf.com/nostr"
+	"github.com/nosuta/nostr"
 )
 
 func encodeKey(pubkey nostr.PubKey, relay string) []byte {
