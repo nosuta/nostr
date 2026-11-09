@@ -1,2 +1,2 @@
 #!/bin/bash
-GOOS=js GOARCH=wasm tinygo test `go list ./... | egrep -v 'eventstore|libsecp256k1|khatru|schema|nipb0|nip13|sdk'` 
+GOOS=js GOARCH=wasm tinygo test `go list ./... | egrep -v 'libsecp256k1|nipb0|nip13'`

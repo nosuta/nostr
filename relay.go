@@ -215,7 +215,9 @@ func (r *Relay) newConnection(ctx context.Context, httpClient *http.Client) erro
 	dialCtx := ctx
 	if _, ok := dialCtx.Deadline(); !ok {
 		// if no timeout is set, force it to 7 seconds
-		dialCtx, _ = context.WithTimeoutCause(ctx, 7*time.Second, errors.New("connection took too long"))
+		var cancel context.CancelFunc
+		dialCtx, cancel = context.WithTimeoutCause(ctx, 7*time.Second, errors.New("connection took too long"))
+		defer cancel()
 	}
 
 	dialOpts := &ws.DialOptions{
@@ -441,12 +443,22 @@ func (r *Relay) WriteWithError(msg []byte) error {
 		return nil
 	}
 
+	connCtx := r.connectionContext
 	select {
-	case <-r.connectionContext.Done():
-		return fmt.Errorf("failed to write to %s: %w", r.URL, context.Cause(r.connectionContext))
+	case <-connCtx.Done():
+		return fmt.Errorf("failed to write to %s: %w", r.URL, context.Cause(connCtx))
 	case r.writeQueue <- writeRequest{msg: msg, answer: ch}:
 	}
-	return <-ch
+
+	// The writer goroutine exits when the connection closes. It may do so with
+	// requests still queued, in which case nothing will ever answer on ch, so
+	// also wait on the connection context to avoid blocking forever.
+	select {
+	case err := <-ch:
+		return err
+	case <-connCtx.Done():
+		return fmt.Errorf("failed to write to %s: %w", r.URL, context.Cause(connCtx))
+	}
 }
 
 // Publish sends an "EVENT" command to the relay r as in NIP-01 and waits for an OK response.

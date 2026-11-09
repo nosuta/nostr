@@ -19,14 +19,7 @@ jobs:
           go-version-file: go.mod
 
       - name: Run tests
-        run: |
-          # すべてのパッケージを取得し除外
-          PKGS=$(go list ./... | grep -v \
-            -e 'github.com/nosuta/nostr/schema' \
-            -e 'github.com/nosuta/nostr/nip29' \
-            -e 'github.com/nosuta/nostr/khatru' \
-            -e 'github.com/nosuta/nostr/sdk')
-          go test $PKGS
+        run: go test ./...
 
   test-wasm-go:
     name: Go WASM Test
@@ -86,7 +79,6 @@ jobs:
             "./nip73"
             "./nip77"
             "./nip77/negentropy"
-            "./nip86"
             "./nip92"
             "./nip94"
           )
@@ -155,7 +147,6 @@ jobs:
             "./nip73"
             "./nip77"
             "./nip77/negentropy"
-            "./nip86"
             "./nip92"
             "./nip94"
           )

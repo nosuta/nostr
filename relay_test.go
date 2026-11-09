@@ -49,6 +49,10 @@ func TestPublish(t *testing.T) {
 		res := []any{"OK", textNote.ID.Hex(), true, ""}
 		err = websocket.JSON.Send(conn, res)
 		require.NoError(t, err)
+
+		// keep the connection open until the client is done, otherwise the
+		// client may see the close before it reads the OK response
+		io.ReadAll(conn)
 	})
 	defer ws.Close()
 

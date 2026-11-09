@@ -5,14 +5,16 @@ package nostr
 import (
 	"context"
 	"testing"
-
-	"github.com/stretchr/testify/require"
 )
 
 func mustRelayConnect(t *testing.T, url string) *Relay {
 	t.Helper()
 	rl, err := RelayConnect(context.Background(), url, RelayOptions{})
-	require.NoError(t, err)
+	if err != nil {
+		// these tests target public relays; skip instead of failing when one
+		// is unreachable or the network is unavailable.
+		t.Skipf("relay %s unavailable: %v", url, err)
+	}
 
 	return rl
 }
