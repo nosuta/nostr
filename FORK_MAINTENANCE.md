@@ -88,7 +88,7 @@ fork needs; do not merge the whole tree. When the review is done, update
 
 ## Upstream review log
 
-Commits cherry-picked since `UPSTREAM_BASE` (2026-11-21):
+Commits cherry-picked since the original baseline `2cec1c9` (2026-11-21):
 
 | Upstream | Fork commit | Notes |
 | --- | --- | --- |
@@ -96,13 +96,22 @@ Commits cherry-picked since `UPSTREAM_BASE` (2026-11-21):
 | `03a55cc` | `04b8229` | Only encode `identifier` when present/addressable; kept the `!tinygo` build tag. |
 | `5fe6a74` | `710614c` | Strict negentropy hex decoding. |
 | `28e324b` | `5edf476` | `EntityPointer.AsFilter` only adds a `d` tag for addressable kinds; the `sdk` hunk was dropped (package removed). |
-| `cbe9f60` | `64c92ed` | Drain stored events before forwarding CLOSED; the upstream test was adapted to this fork's `chan struct{}` EOSE API. |
+| `cbe9f60` | `64c92ed` | Drain stored events before forwarding CLOSED; the upstream test was adapted to the fork's EOSE API. |
 | `2efc33a` | `46deac3` | `NEG-ERR` label, but kept the fork's `bytes.Buffer` encoder so TinyGo avoids easyjson's `jwriter`. |
+| `a9d6abb` | `218f55f` | NIP-67 EOSE hints: `EndOfStoredEvent.Hint` and `dispatchEose(hint)`. |
+| `545360d` | `983b5ca` | `EOSEEnvelope.SubscriptionID` used for relay lookup. |
+| `9669b4b` | `2b10491` | `EOSEEnvelope` struct + multi-filter REQ encoding; `khatru` hunk dropped. |
 
-`UPSTREAM_BASE` is deliberately still `2cec1c9`: the remaining upstream
-commits include wire-type changes (`EOSEEnvelope` becoming a struct, multiple
-filters in REQ, `PoolOptions` removal) that need a separate, careful review.
-Taking them partially would risk breaking concord-go.
+The struct form was mirrored into `envelopes_tinygo.go` and the hint parsing
+into `relay_js.go`, so native, Go wasm and TinyGo wasm encode the same wire
+format. The follow-up commit adapts the fork's test to `EndOfStoredEvent`.
+
+`UPSTREAM_BASE` is now `26892fc`. The remaining upstream commits touching
+client paths were reviewed at title level and intentionally not applied:
+blossom/fasthttp client code, `sdk`/`nip86`/`khatru` (removed packages), pool
+and penalty-box rework (replaced by the folded pool), and NIPs Concord does
+not use. Taking them would fight the intentional divergences rather than
+improve concord-go.
 
 ## Web/TinyGo runtime constraints
 

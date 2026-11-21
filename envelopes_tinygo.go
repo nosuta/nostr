@@ -39,7 +39,7 @@ func ParseMessage(message string) (Envelope, error) {
 		x := NoticeEnvelope("")
 		v = &x
 	case "EOSE":
-		x := EOSEEnvelope("")
+		x := EOSEEnvelope{}
 		v = &x
 	case "OK":
 		v = &OKEnvelope{}
@@ -150,6 +150,9 @@ func (v *ReqEnvelope) FromJSON(data string) error {
 }
 
 func (v ReqEnvelope) MarshalJSON() ([]byte, error) {
+	if len(v.Filters) == 0 {
+		return nil, fmt.Errorf("failed to encode REQ envelope: missing filters")
+	}
 	var b []byte
 	b = append(b, `["REQ",`...)
 	b = escapeString(b, v.SubscriptionID)
@@ -264,8 +267,14 @@ func (v NoticeEnvelope) MarshalJSON() ([]byte, error) {
 	return b, nil
 }
 
-// EOSEEnvelope represents an EOSE (End of Stored Events) message.
-type EOSEEnvelope string
+// EOSEEnvelope represents an EOSE (End of Stored Events) message. The NIP-67
+// hint flags are optional and only present on relays that implement it.
+type EOSEEnvelope struct {
+	SubscriptionID string
+	Auth           bool
+	Finish         bool
+	More           bool
+}
 
 func (_ EOSEEnvelope) Label() string { return "EOSE" }
 func (e EOSEEnvelope) String() string {
@@ -279,14 +288,46 @@ func (v *EOSEEnvelope) FromJSON(data string) error {
 	if len(arr) < 2 {
 		return fmt.Errorf("failed to decode EOSE envelope")
 	}
-	*v = EOSEEnvelope(arr[1].String())
+
+	*v = EOSEEnvelope{SubscriptionID: arr[1].String()}
+	if len(arr) >= 3 {
+		for _, h := range arr[2].Array() {
+			switch h.Str {
+			case "auth":
+				v.Auth = true
+			case "finish":
+				v.Finish = true
+			case "more":
+				v.More = true
+			}
+		}
+	}
 	return nil
 }
 
 func (v EOSEEnvelope) MarshalJSON() ([]byte, error) {
 	var b []byte
 	b = append(b, `["EOSE",`...)
-	b = escapeString(b, string(v))
+	b = escapeString(b, v.SubscriptionID)
+	if v.Auth || v.More || v.Finish {
+		b = append(b, ',', '[')
+		if v.Auth {
+			b = append(b, `"auth"`...)
+		}
+		if v.Finish {
+			if v.Auth {
+				b = append(b, ',')
+			}
+			b = append(b, `"finish"`...)
+		} else {
+			// Match the standard encoder: a non-finish EOSE carries "more".
+			if v.Auth {
+				b = append(b, ',')
+			}
+			b = append(b, `"more"`...)
+		}
+		b = append(b, ']')
+	}
 	b = append(b, ']')
 	return b, nil
 }
