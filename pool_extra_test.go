@@ -99,6 +99,7 @@ func TestMergeFiltersKeepsIncompatibleSeparate(t *testing.T) {
 }
 
 func TestLocalRelayPublishFetchAndCancel(t *testing.T) {
+	skipIfNoLocalRelay(t)
 	key := SecretKey{1}
 	event := Event{Kind: 1, CreatedAt: 1, Content: "local transport test", Tags: Tags{}}
 	if err := event.Sign(key); err != nil {
@@ -229,6 +230,7 @@ func (s secretSigner) SignEvent(_ context.Context, ev *Event) error {
 }
 
 func TestLocalRelayAuthRequired(t *testing.T) {
+	skipIfNoLocalRelay(t)
 	key := SecretKey{7}
 	runRelayAuthRequired(t, key, authKeyOptions(key))
 }
@@ -236,6 +238,7 @@ func TestLocalRelayAuthRequired(t *testing.T) {
 // TestAuthSignerRelayAuthRequired covers NIP-07/NIP-46 accounts: a pool with
 // only AuthSigner (no raw key) must still answer a relay's NIP-42 challenge.
 func TestAuthSignerRelayAuthRequired(t *testing.T) {
+	skipIfNoLocalRelay(t)
 	key := SecretKey{7}
 	runRelayAuthRequired(t, key, authSignerOptions(secretSigner{sk: key}))
 }
@@ -244,6 +247,7 @@ func TestAuthSignerRelayAuthRequired(t *testing.T) {
 // serves nothing until answered (relay.damus.io): a reactive CLOSED is never
 // offered, so only a proactive AUTH response can authenticate.
 func TestProactiveAuthAnswered(t *testing.T) {
+	skipIfNoLocalRelay(t)
 	key := SecretKey{7}
 	runProactiveAuth(t, key, authKeyOptions(key))
 	runProactiveAuth(t, key, authSignerOptions(secretSigner{sk: key}))
@@ -435,6 +439,7 @@ func runProactiveAuth(t *testing.T, key SecretKey, cfg PoolOptions) {
 // to connect is cooled down after a one-shot fetch, so later operations skip it
 // while a reachable relay is still used.
 func TestFailedRelayCooledDown(t *testing.T) {
+	skipIfNoLocalRelay(t)
 	ln, err := net.Listen("tcp", "127.0.0.1:0")
 	if err != nil {
 		t.Fatal(err)
@@ -491,6 +496,7 @@ func TestFailedRelayCooledDown(t *testing.T) {
 }
 
 func TestConnectedRelays(t *testing.T) {
+	skipIfNoLocalRelay(t)
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

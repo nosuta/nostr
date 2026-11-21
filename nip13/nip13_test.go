@@ -109,6 +109,7 @@ func testNonceTag(t *testing.T, tag nostr.Tag, commitment int) {
 }
 
 func TestDoWorkTimeout(t *testing.T) {
+	skipIfNoTimerPreemption(t)
 	event := nostr.Event{
 		Kind:    nostr.KindTextNote,
 		Content: "It's just me mining my own business",

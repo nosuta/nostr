@@ -17,6 +17,7 @@ import (
 	"sync"
 	"sync/atomic"
 	"time"
+	"unicode/utf8"
 
 	ws "github.com/coder/websocket"
 )
@@ -43,6 +44,31 @@ func (c closeCause) Error() string {
 		return "relay closed"
 	}
 	return c.reason
+}
+
+// browserCloseCode maps a close code to one WebSocket.close() accepts in a
+// browser: 1000 or 3000-4999. Browsers reject reserved codes such as 1006 or
+// 1011 with InvalidAccessError; on TinyGo/wasm that exception cannot be
+// recovered and traps the whole worker instead of just failing this relay.
+func browserCloseCode(code ws.StatusCode) ws.StatusCode {
+	if code == ws.StatusNormalClosure || (code >= 3000 && code <= 4999) {
+		return code
+	}
+	return ws.StatusNormalClosure
+}
+
+// browserCloseReason enforces the 123-byte reason limit of WebSocket.close().
+// A longer reason throws InvalidAccessError in browsers, which traps a TinyGo
+// wasm worker for the same reason as an invalid close code.
+func browserCloseReason(reason string) string {
+	if len(reason) <= 123 {
+		return reason
+	}
+	reason = reason[:123]
+	for len(reason) > 0 && !utf8.ValidString(reason) {
+		reason = reason[:len(reason)-1]
+	}
+	return reason
 }
 
 // Relay represents a connection to a Nostr relay.
@@ -110,7 +136,10 @@ func NewRelay(ctx context.Context, url string, opts RelayOptions) *Relay {
 				reason = cause.Error()
 			}
 
-			_ = r.conn.Close(code, reason)
+			// Never let an invalid code or an overlong reason reach
+			// WebSocket.close() in the browser: see browserCloseCode and
+			// browserCloseReason.
+			_ = r.conn.Close(browserCloseCode(code), browserCloseReason(reason))
 		}
 	}()
 

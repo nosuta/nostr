@@ -1,2 +1,8 @@
 #!/bin/bash
-GOOS=js GOARCH=wasm tinygo test `go list ./... | egrep -v 'libsecp256k1|nipb0|nip13'`
+set -e
+
+# Compile every package (and its test binary) for TinyGo/wasm, then run the
+# short runtime suite. The old exclusions (libsecp256k1, nipb0, nip13) are no
+# longer needed: all packages compile under TinyGo now.
+GOOS=js GOARCH=wasm tinygo test -run '^$' ./...
+GOOS=js GOARCH=wasm tinygo test -short ./...

@@ -17,3 +17,8 @@ go get github.com/nosuta/nostr
 
 - **keyer**: Key and bunker management utilities
 - NIP-specific libraries with helpers and other things for many NIPs and related stuff, including blossom, negentropy and cashu mini-libraries.
+
+## Development
+
+See `FORK_MAINTENANCE.md` for the intentional divergences from upstream, the
+build-tag map, and the procedure for merging upstream and publishing a release.

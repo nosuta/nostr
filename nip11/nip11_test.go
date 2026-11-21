@@ -36,6 +36,9 @@ func TestAddSupportedNIPs(t *testing.T) {
 }
 
 func TestFetch(t *testing.T) {
+	if testing.Short() {
+		t.Skip("skipping live relay fetch in short mode")
+	}
 	tests := []struct {
 		inputURL     string
 		expectError  bool
