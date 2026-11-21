@@ -13,7 +13,7 @@ func closedTestSubscription(t *testing.T) *Subscription {
 		Context:           ctx,
 		cancel:            cancel,
 		Events:            make(chan Event),
-		EndOfStoredEvents: make(chan EndOfStoredEvent, 1),
+		EndOfStoredEvents: make(chan struct{}, 1),
 		ClosedReason:      make(chan string, 1),
 		eoseTimedOut:      make(chan struct{}),
 	}
@@ -44,7 +44,7 @@ func TestClosedDrainsStoredEvents(t *testing.T) {
 				sub.dispatchEvent(Event{Content: string(rune('a' + i))})
 			}
 			if withEOSE {
-				sub.dispatchEose(nil)
+				sub.dispatchEose()
 			}
 			sub.handleClosed("finished")
 
@@ -81,7 +81,7 @@ func TestClosedDrainsStoredEvents(t *testing.T) {
 func TestClosedUnblocksWhenPendingDeliveryIsCanceled(t *testing.T) {
 	sub := closedTestSubscription(t)
 	sub.dispatchEvent(Event{Content: "unread"})
-	sub.dispatchEose(nil)
+	sub.dispatchEose()
 	sub.handleClosed("finished")
 	sub.Unsub()
 	select {

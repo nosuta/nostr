@@ -171,11 +171,13 @@ func (v *ErrorEnvelope) FromJSON(data string) error {
 }
 
 func (v ErrorEnvelope) MarshalJSON() ([]byte, error) {
-	w := jwriter.Writer{NoEscapeHTML: true}
-	w.RawString(`["NEG-ERR",`)
-	w.String(v.SubscriptionID)
-	w.RawByte(',')
-	w.String(v.Reason)
-	w.RawByte(']')
-	return w.BuildBytes()
+	// Keep the fork's bytes.Buffer encoder: easyjson's jwriter is confined to
+	// the build-tagged json files so TinyGo can compile this package.
+	res := bytes.NewBuffer(make([]byte, 0, 17+len(v.SubscriptionID)+len(v.Reason)))
+	res.WriteString(`["NEG-ERR","`)
+	res.WriteString(v.SubscriptionID)
+	res.WriteString(`","`)
+	res.WriteString(v.Reason)
+	res.WriteString(`"]`)
+	return res.Bytes(), nil
 }

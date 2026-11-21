@@ -86,6 +86,24 @@ fork needs; do not merge the whole tree. When the review is done, update
    `go get github.com/nosuta/nostr@vX.Y.Z`. `go.work.sum` usually needs no
    change: the module-level `go.sum` files already carry the hashes.
 
+## Upstream review log
+
+Commits cherry-picked since `UPSTREAM_BASE` (2026-11-21):
+
+| Upstream | Fork commit | Notes |
+| --- | --- | --- |
+| `72a5be5` | `e92fc98` | Fix `AppendUnique` skipping only one duplicate. |
+| `03a55cc` | `04b8229` | Only encode `identifier` when present/addressable; kept the `!tinygo` build tag. |
+| `5fe6a74` | `710614c` | Strict negentropy hex decoding. |
+| `28e324b` | `5edf476` | `EntityPointer.AsFilter` only adds a `d` tag for addressable kinds; the `sdk` hunk was dropped (package removed). |
+| `cbe9f60` | `64c92ed` | Drain stored events before forwarding CLOSED; the upstream test was adapted to this fork's `chan struct{}` EOSE API. |
+| `2efc33a` | `46deac3` | `NEG-ERR` label, but kept the fork's `bytes.Buffer` encoder so TinyGo avoids easyjson's `jwriter`. |
+
+`UPSTREAM_BASE` is deliberately still `2cec1c9`: the remaining upstream
+commits include wire-type changes (`EOSEEnvelope` becoming a struct, multiple
+filters in REQ, `PoolOptions` removal) that need a separate, careful review.
+Taking them partially would risk breaking concord-go.
+
 ## Web/TinyGo runtime constraints
 
 - TinyGo's wasm target cannot recover panics. Any `syscall/js` call that throws
