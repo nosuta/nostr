@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"math"
 	"slices"
 	"strings"
 	"sync"
@@ -31,9 +30,12 @@ type Pool struct {
 	queryMiddleware     func(relay string, pubkey PubKey, kind Kind)
 	relayOptions        RelayOptions
 
-	// custom things not often used
-	penaltyBoxMu sync.Mutex
-	penaltyBox   map[string][2]float64
+	// Relay connect-failure cooldowns. The old PenaltyBox assigned its map
+	// without synchronization; these fields are always guarded by penMu.
+	penMu       sync.Mutex
+	pen         map[string]time.Time
+	cooldowns   CooldownStore
+	cooldownTTL time.Duration
 }
 
 // DirectedFilter combines a Filter with a specific relay URL.
@@ -48,9 +50,13 @@ func (df DirectedFilter) String() string {
 
 func (ie RelayEvent) String() string { return fmt.Sprintf("[%s] >> %s", ie.Relay.URL, ie.Event) }
 
-// NewPool creates a new Pool with the given context and options.
+// NewPool creates a new Pool with the given options.
 func NewPool(opts PoolOptions) *Pool {
-	ctx, cancel := context.WithCancelCause(context.Background())
+	parent := opts.Context
+	if parent == nil {
+		parent = context.Background()
+	}
+	ctx, cancel := context.WithCancelCause(parent)
 
 	pool := &Pool{
 		Relays: NewMapOf[string, *Relay](),
@@ -58,29 +64,67 @@ func NewPool(opts PoolOptions) *Pool {
 		Context: ctx,
 		cancel:  cancel,
 
-		authRequiredHandler: opts.AuthRequiredHandler,
 		eventMiddleware:     opts.EventMiddleware,
 		duplicateMiddleware: opts.DuplicateMiddleware,
 		queryMiddleware:     opts.AuthorKindQueryMiddleware,
-		relayOptions:        opts.RelayOptions,
 	}
 
-	if opts.PenaltyBox {
-		go pool.startPenaltyBox()
+	// NIP-42 has two entry points: a relay's proactive AUTH message and a
+	// CLOSED/OK carrying "auth-required:". Both share one signature cache so an
+	// external signer is asked only once per challenge.
+	authHandler := opts.AuthRequiredHandler
+	if authHandler == nil && opts.RelayOptions.AuthHandler != nil {
+		relayHandler := opts.RelayOptions.AuthHandler
+		authHandler = func(ctx context.Context, ev *Event) error {
+			return relayHandler(ctx, nil, ev)
+		}
+	}
+	if authHandler != nil {
+		d := newAuthDeduper(authHandler)
+		pool.authRequiredHandler = d.handle
+		opts.RelayOptions.AuthHandler = func(ctx context.Context, _ *Relay, ev *Event) error {
+			return d.handle(ctx, ev)
+		}
+	}
+	pool.relayOptions = opts.RelayOptions
+
+	ttl := opts.CooldownTTL
+	if ttl <= 0 {
+		ttl = relayCooldownTTL
+	}
+	pool.pen = make(map[string]time.Time)
+	pool.cooldowns = opts.Cooldowns
+	pool.cooldownTTL = ttl
+	if pool.cooldowns != nil {
+		now := time.Now()
+		for url, until := range pool.cooldowns.LoadCooldowns() {
+			if expiry := time.Unix(until, 0); expiry.After(now) {
+				pool.pen[NormalizeURL(url)] = expiry
+			}
+		}
 	}
 
 	return pool
 }
 
 type PoolOptions struct {
+	// Context bounds the pool's lifetime. When nil, context.Background() is used.
+	Context context.Context
+
 	// AuthRequiredHandler, if given, must be a function that signs the auth event when called.
 	// it will be called whenever any relay in the pool returns a `CLOSED` or `OK` message
-	// with the "auth-required:" prefix, only once for each relay
+	// with the "auth-required:" prefix, only once for each relay. The call is
+	// deduplicated across both AUTH entry points.
 	AuthRequiredHandler func(context.Context, *Event) error
 
-	// PenaltyBox just sets the penalty box mechanism so relays that fail to connect
-	// or that disconnect will be ignored for a while and we won't attempt to connect again.
-	PenaltyBox bool
+	// Cooldowns, when set, persists relay connect-failure cooldowns across runs:
+	// a relay that just failed is skipped on the next start instead of paying
+	// the dial timeout again.
+	Cooldowns CooldownStore
+
+	// CooldownTTL overrides how long a failed relay is skipped. Zero uses
+	// relayCooldownTTL.
+	CooldownTTL time.Duration
 
 	// EventMiddleware is a function that will be called with all events received.
 	EventMiddleware func(RelayEvent)
@@ -97,72 +141,32 @@ type PoolOptions struct {
 	RelayOptions RelayOptions
 }
 
-func (pool *Pool) startPenaltyBox() {
-	pool.penaltyBox = make(map[string][2]float64)
-	go func() {
-		sleep := 30.0
-		for {
-			time.Sleep(time.Duration(sleep) * time.Second)
-
-			pool.penaltyBoxMu.Lock()
-			nextSleep := 300.0
-			for url, v := range pool.penaltyBox {
-				remainingSeconds := v[1]
-				remainingSeconds -= sleep
-				if remainingSeconds <= 0 {
-					pool.penaltyBox[url] = [2]float64{v[0], 0}
-					continue
-				} else {
-					pool.penaltyBox[url] = [2]float64{v[0], remainingSeconds}
-				}
-
-				if remainingSeconds < nextSleep {
-					nextSleep = remainingSeconds
-				}
-			}
-
-			sleep = nextSleep
-			pool.penaltyBoxMu.Unlock()
-		}
-	}()
-}
-
 // EnsureRelay ensures that a relay connection exists and is active.
 // If the relay is not connected, it attempts to connect.
 func (pool *Pool) EnsureRelay(url string) (*Relay, error) {
 	nm := NormalizeURL(url)
+	pool.penMu.Lock()
+	until := pool.pen[nm]
+	pool.penMu.Unlock()
+	if until.After(time.Now()) {
+		return nil, fmt.Errorf("relay %s is cooling down until %s", url, until.Format(time.RFC3339))
+	}
+
 	defer namedLock(nm)()
 
-	relay, ok := pool.Relays.Load(nm)
-	if ok && relay == nil {
-		if pool.penaltyBox != nil {
-			pool.penaltyBoxMu.Lock()
-			defer pool.penaltyBoxMu.Unlock()
-			v, _ := pool.penaltyBox[nm]
-			if v[1] > 0 {
-				return nil, fmt.Errorf("in penalty box, %fs remaining", v[1])
-			}
-		}
-	} else if ok && relay.IsConnected() {
-		// already connected, unlock and return
+	if relay, ok := pool.Relays.Load(nm); ok && relay != nil && relay.IsConnected() {
 		return relay, nil
 	}
 
-	relay = NewRelay(pool.Context, url, pool.relayOptions)
-	// try to connect
+	relay := NewRelay(pool.Context, url, pool.relayOptions)
 	// we use this ctx here so when the pool dies everything dies
 	if err := relay.Connect(pool.Context); err != nil {
-		if pool.penaltyBox != nil {
-			// putting relay in penalty box
-			pool.penaltyBoxMu.Lock()
-			defer pool.penaltyBoxMu.Unlock()
-			v, _ := pool.penaltyBox[nm]
-			pool.penaltyBox[nm] = [2]float64{v[0] + 1, 30.0 + math.Pow(2, v[0]+1)}
-		}
+		pool.penalize(url)
 		return nil, fmt.Errorf("failed to connect: %w", err)
 	}
 
 	pool.Relays.Store(nm, relay)
+	pool.clearPenalty(url)
 	go func(r *Relay, relayURL string) {
 		<-r.Context().Done()
 		if current, ok := pool.Relays.Load(relayURL); ok && current == r {
@@ -179,8 +183,17 @@ type PublishResult struct {
 	Relay    *Relay
 }
 
-// PublishMany publishes an event to multiple relays and returns a channel of results emitted as they're received.
+// PublishMany publishes an event to multiple relays, skipping relays that are
+// still cooling down from a connect failure. The result channel is cancelled
+// with the pool and closed when all relays have answered.
 func (pool *Pool) PublishMany(ctx context.Context, urls []string, evt Event) chan PublishResult {
+	urls = pool.usableRelays(urls)
+	ctx, cancel := pool.operation(ctx)
+	return pool.forwardPublishes(ctx, cancel, pool.publishManyRaw(ctx, urls, evt))
+}
+
+// publishManyRaw is the per-relay publish fan-out without cooldown filtering.
+func (pool *Pool) publishManyRaw(ctx context.Context, urls []string, evt Event) chan PublishResult {
 	ch := make(chan PublishResult, len(urls))
 
 	wg := sync.WaitGroup{}
@@ -243,7 +256,9 @@ func (pool *Pool) SubscribeMany(
 	filter Filter,
 	opts SubscriptionOptions,
 ) chan RelayEvent {
-	return pool.subMany(ctx, urls, filter, nil, nil, opts)
+	urls = pool.usableRelays(urls)
+	ctx, cancel := pool.operation(ctx)
+	return forward(ctx, cancel, pool.subMany(ctx, urls, filter, nil, nil, opts))
 }
 
 func (pool *Pool) FetchManyNotifyClosed(
@@ -265,7 +280,9 @@ func (pool *Pool) FetchMany(
 	filter Filter,
 	opts SubscriptionOptions,
 ) chan RelayEvent {
-	return pool.fetchMany(ctx, urls, filter, nil, opts)
+	urls = pool.usableRelays(urls)
+	ctx, cancel := pool.operation(ctx)
+	return pool.forwardFetch(ctx, cancel, urls, pool.fetchMany(ctx, urls, filter, nil, opts))
 }
 
 func (pool *Pool) fetchMany(

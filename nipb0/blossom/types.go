@@ -6,7 +6,8 @@ import (
 	"github.com/nosuta/nostr"
 )
 
-// BlobDescriptor represents metadata about a blob stored on a media server
+// BlobDescriptor is a BUD-02 blob descriptor: the response to an upload (or a
+// HEAD/GET), naming where the blob lives and what it is.
 type BlobDescriptor struct {
 	URL      string          `json:"url"`
 	SHA256   string          `json:"sha256"`
@@ -15,7 +16,7 @@ type BlobDescriptor struct {
 	Uploaded nostr.Timestamp `json:"uploaded"`
 }
 
-// String returns a JSON string representation of the BlobDescriptor
+// String returns a JSON string representation of the BlobDescriptor.
 func (bd BlobDescriptor) String() string {
 	j, _ := json.Marshal(bd)
 	return string(j)
