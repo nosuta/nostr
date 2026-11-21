@@ -4,7 +4,7 @@ This repository is a client-only fork of `go-nostr`. It is published as
 `github.com/nosuta/nostr` and consumed by `concord-go` (root, `av`, and
 `gui/go` modules). The fork intentionally diverges from upstream in a few
 places; this document records what those divergences are and how to re-apply
-them after merging upstream.
+them after cherry-picking upstream changes.
 
 ## Intentional divergences
 
@@ -34,20 +34,38 @@ When adding a new feature, check whether each build configuration still
 compiles: native, Go js/wasm, and TinyGo js/wasm. Prefer a new build-tagged file
 over editing an untagged upstream file: it keeps upstream merges small.
 
-## Merging upstream
+## Upstream baseline and review
 
-1. Work in a topic branch. Fetch upstream (`git fetch upstream` or the
-   `gitnostr.com` git mirror; the `nostr://` remote is not a git transport for
-   `git fetch`) and merge/rebase onto it.
-2. Resolve conflicts by keeping upstream code for untagged files unless the
-   change is one of the intentional divergences above. Re-apply the divergences
-   as small, tagged patches where possible.
-3. Re-run the import rewrite: every Go import of `fiatjaf.com/nostr` or
+A full merge is not the goal: most of the diff from upstream is intentional
+(see above), so merging would just re-create the same conflicts every time.
+`UPSTREAM_BASE` records the last upstream commit whose client-side changes have
+been reviewed. The `gitnostr.com` HTTPS mirror tracks upstream (`2cec1c9` was
+its head when the baseline was recorded); the `nostr://` remote named
+`upstream` is stale, and the canonical source is
+`https://github.com/nbd-wtf/go-nostr.git`.
+
+Review newer upstream work with:
+
+```sh
+scripts/check-upstream.sh --fetch   # or set UPSTREAM_REMOTE / UPSTREAM_REF
+```
+
+It lists only commits touching client-side paths (the server-side packages
+removed on purpose are excluded) plus a diffstat. Cherry-pick only what this
+fork needs; do not merge the whole tree. When the review is done, update
+`UPSTREAM_BASE` to the new upstream head.
+
+## Applying an upstream change
+
+1. Work in a topic branch and cherry-pick the relevant upstream commit(s).
+   Conflict resolution should keep our build-tagged files and the intentional
+   divergences above; take upstream code for genuinely shared logic.
+2. Re-run the import rewrite: every Go import of `fiatjaf.com/nostr` or
    `github.com/nbd-wtf/go-nostr` must become `github.com/nosuta/nostr`.
    `git grep -n 'fiatjaf.com/nostr\|github.com/nbd-wtf/go-nostr' -- '*.go'`
    must be empty. Upstream also rewrites its own imports, so repeat this after
-   every merge.
-4. Verify (all four must pass):
+   every cherry-pick.
+3. Verify (all four must pass):
 
    ```sh
    gofmt -l .                         # must print nothing
@@ -63,9 +81,10 @@ over editing an untagged upstream file: it keeps upstream merges small.
    A locally installed `go_js_wasm_exec` compiled against an older Go may look
    for a stale `GOROOT`; set `GOROOT=$(go env GOROOT)` when running the Go
    js/wasm command in that case.
-5. Tag the result (`git tag -a vX.Y.Z -m ...`), push the commit and tag to
+4. Tag the result (`git tag -a vX.Y.Z -m ...`), push the commit and tag to
    `origin`, then bump the dependency in all three `concord-go` modules with
-   `go get github.com/nosuta/nostr@vX.Y.Z` and commit the updated `go.work.sum`.
+   `go get github.com/nosuta/nostr@vX.Y.Z`. `go.work.sum` usually needs no
+   change: the module-level `go.sum` files already carry the hashes.
 
 ## Web/TinyGo runtime constraints
 
